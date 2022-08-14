@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "gdk",
+    "gtk",
+    "keynamestoenum",
+]
