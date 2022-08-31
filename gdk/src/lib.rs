@@ -1,6 +1,9 @@
 use bitflags::bitflags;
 
+pub mod config;
+pub mod cursor;
 pub mod keyname_table;
+pub mod rgb;
 
 /// replaces GdkByteOrder
 pub enum ByteOrder {
@@ -81,6 +84,80 @@ pub struct GdkSegment {
 pub struct GdkSpan {
     pub point: GdkPoint,
     pub width: i32,
+}
+
+/* gdkrgb.h and gdkrgb.c */
+pub enum GdkRgbDither {
+    None,
+    Normal,
+    Max,
+}
+
+/* struct GdkPredicate {
+    func: GdkEnventFunc,
+    data: gpointer,
+}
+
+struct GdkThreadsDispatch {
+    func: GSourceFunc,
+    data: gpointer,
+    destroy: GDestroyNotify,
+} */
+
+pub struct GdkError {
+    pub domain: i64,
+    pub code: i64,
+    pub message: String,
+}
+
+pub struct GdkLibraryState {
+    initialized: bool,
+    program_class: String,
+    program_name: String,
+}
+
+/* fn gdk_arg_class_cb(key: &str, value: &str, user_data: gpointer, error: GdkError) -> bool {
+    gdk_set_program_class(value);
+    return true;
+} */
+
+/* fn gdk_arg_name_cb(key: &str, value: &str, user_data: gpointer, error: GdkError) -> bool {
+    gdk_set_prgname(value);
+    return true;
+} */
+
+impl GdkLibraryState {
+    /**
+     * Sets the program_class.
+     */
+    fn set_program_class(self: &mut Self, value: &str) {
+        self.program_class = String::from(value);
+    }
+
+    /**
+ * Gets the program_class.
+ */
+fn get_program_class(self: &Self) -> String {
+    let mut rvalue: String = String::with_capacity(self.program_class.len());
+    rvalue.push_str(self.program_class.as_str());
+    return rvalue;
+}
+
+/**
+ * Sets the program_name.
+ */
+fn set_program_name(self: &mut Self, value: &str) {
+    self.program_name = String::from(value);
+}
+
+/**
+ * Gets the program_name.
+ */
+fn get_program_name(self: &Self) -> String {
+    let mut rvalue: String = String::with_capacity(self.program_name.len());
+    rvalue.push_str(self.program_name.as_str());
+    return rvalue;
+}
 }
 
 pub fn add(left: usize, right: usize) -> usize {
