@@ -135,29 +135,29 @@ impl GdkLibraryState {
     }
 
     /**
- * Gets the program_class.
- */
-fn get_program_class(self: &Self) -> String {
-    let mut rvalue: String = String::with_capacity(self.program_class.len());
-    rvalue.push_str(self.program_class.as_str());
-    return rvalue;
-}
+     * Gets the program_class.
+     */
+    fn get_program_class(self: &Self) -> String {
+        let mut rvalue: String = String::with_capacity(self.program_class.len());
+        rvalue.push_str(self.program_class.as_str());
+        return rvalue;
+    }
 
-/**
- * Sets the program_name.
- */
-fn set_program_name(self: &mut Self, value: &str) {
-    self.program_name = String::from(value);
-}
+    /**
+     * Sets the program_name.
+     */
+    fn set_program_name(self: &mut Self, value: &str) {
+        self.program_name = String::from(value);
+    }
 
-/**
- * Gets the program_name.
- */
-fn get_program_name(self: &Self) -> String {
-    let mut rvalue: String = String::with_capacity(self.program_name.len());
-    rvalue.push_str(self.program_name.as_str());
-    return rvalue;
-}
+    /**
+     * Gets the program_name.
+     */
+    fn get_program_name(self: &Self) -> String {
+        let mut rvalue: String = String::with_capacity(self.program_name.len());
+        rvalue.push_str(self.program_name.as_str());
+        return rvalue;
+    }
 }
 
 pub fn add(left: usize, right: usize) -> usize {
